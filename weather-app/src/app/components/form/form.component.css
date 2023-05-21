@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 8%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content:  flex-start;
+    align-items: center;
+    
+}
+
+#btn1 {
+    margin-top: 3%;
+    width: 125px;
+    align-self: center;
+    margin-left: 11%;
+    color: white;
+    background-color: var(--clr-primary-400);
+    border-radius: .5rem;
+    border: 1px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #btn1:hover {
+    background-color: #aaa;
+  }
+  
+  #btn1:active {
+    background-color: #666;
+  }

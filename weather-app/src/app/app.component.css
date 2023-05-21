@@ -1,0 +1,25 @@
+.wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto;
+height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /*align-items: center; */
+    width: 500px;
+    border: 1px solid black;
+    border-radius: .5rem;
+    height: 50vh;
+
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%; 
+    }
+}
