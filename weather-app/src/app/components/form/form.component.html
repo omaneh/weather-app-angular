@@ -1,12 +1,13 @@
 <div class="container">
     <div class="form">
     <label>Zip Code:
-    <input type="text" [(ngModel)] = "zipcode" placeholder="Enter zipcode here"></label>
-    <button id="btn1" (click) = "storeZip(zipcode)">Enter</button>
+    <input type="number" [(ngModel)] = "zipcode" placeholder="Enter zipcode here"></label>
+    <button id="btn1" (click) = "storeZip()">Enter</button>
     </div>
     <div class="weather">
         <p>Current weather: 
         </p>
+        <p *ngIf = "validZipcode">{{weather}}</p>
         <img src="" alt="" srcset="">
     </div>
 </div>
