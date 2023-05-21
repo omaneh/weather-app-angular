@@ -1,13 +1,26 @@
 <div class="container">
     <div class="form">
     <label>Zip Code:
-    <input type="number" [(ngModel)] = "zipcode" placeholder="Enter zipcode here"></label>
+    <input type="text" [(ngModel)] = "zipcode" placeholder="Enter zipcode here"></label>
     <button id="btn1" (click) = "storeZip()">Enter</button>
     </div>
     <div class="weather">
-        <p>Current weather: 
-        </p>
-        <p *ngIf = "validZipcode">{{weather}}</p>
-        <img src="" alt="" srcset="">
+        <h3>Current Weather: </h3>
+        <div>
+        <div class="displayImage">
+            <img src="" alt="">
+        </div>
+        <div class="displayTemperature" *ngIf = "validZipcode">
+        <h4>{{weather.temp.toFixed(1)}}</h4>
+        <div>
+        <a (click) = "convertF()"> F</a> | <a (click) = "convertC()"> C</a>
+        </div>
+        </div>
+        <div class="displayStats">
+            <p>Precipiation: {{weather.cloud_pct}}</p>
+            <p>Wind speed: {{weather.wind_speed}}</p>
+            <p>Feels like: {{weather.feels_like.toFixed(1)}}</p>     
+        </div>
+    </div>
     </div>
 </div>

@@ -34,3 +34,9 @@
   #btn1:active {
     background-color: #666;
   }
+
+  .displayTemperature {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }

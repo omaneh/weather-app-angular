@@ -15,7 +15,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getWeather(zipcode: number): Observable<Weather> {
+  getWeather(zipcode: string): Observable<Weather> {
     const url = `${this.apiUrl + zipcode}`;
     const headers = new HttpHeaders().set('X-Api-Key', this.apiKey);
 
