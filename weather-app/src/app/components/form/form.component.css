@@ -40,3 +40,23 @@
     flex-direction: row;
     gap: 25px;
   }
+
+  .values {
+    display: flex;
+    flex-direction: column;
+  }
+  .weather {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+  }
+
+  .small-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+  }
+
+  #image-box {
+    max-width: 150px;
+  }

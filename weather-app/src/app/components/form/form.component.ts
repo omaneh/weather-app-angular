@@ -1,3 +1,4 @@
+import { withInterceptors } from '@angular/common/http';
 import { Component, OnInit} from '@angular/core';
 import { CheckboxRequiredValidator } from '@angular/forms';
 import { WeatherService } from 'services/weather.service';
@@ -12,6 +13,9 @@ export class FormComponent {
 zipcode!: string;
 weather!: Weather;
 validZipcode: boolean = false;
+imagePaths: any[] = ['../../../assets/sunny.jpg', '../../../assets/sunny_with_clouds.jpg', '../../../assets/cloudy.jpg', '../../../assets/rainy.jpg'];
+currentImageName!: string;
+currentImagePath: string = '../../../assets/white.jpg';
 
 constructor(private weatherService: WeatherService) {}
 
@@ -36,10 +40,33 @@ isValid(zip: string): boolean {
   }
   return false;
 }
-
-returnWeather(): void{
-this.weatherService.getWeather(this.zipcode).subscribe(weather => (this.weather = weather));
-}
+  async returnWeather(): Promise<void>{
+    this.weatherService.getWeather(this.zipcode).subscribe(
+      (weather) => {
+        this.weather = weather;
+  
+        if (this.weather.cloud_pct > 10 && this.weather.temp > 20) {
+          this.currentImagePath = this.imagePaths[0];
+          this.currentImageName = "Sunny";
+        }
+        if (this.weather.cloud_pct > 30 && this.weather.temp >= 15) {
+          this.currentImagePath = this.imagePaths[1];
+          this.currentImageName = "Sunny with Clouds";
+        }
+        if (this.weather.cloud_pct > 60) {
+          this.currentImagePath = this.imagePaths[0];
+          this.currentImageName = "Cloudy";
+        }
+        if (this.weather.cloud_pct > 85) {
+          this.currentImagePath = this.imagePaths[3];
+          this.currentImageName = "Rainy";
+        }
+      },
+      (error) => {
+        console.log('Error:', error);
+      }
+    );
+  }
 convertF() {
   this.weather.temp = (this.weather.temp * 9/5) + 32
   this.weather.feels_like = (this.weather.feels_like * 9/5) + 32
